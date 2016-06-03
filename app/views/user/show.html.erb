@@ -1,0 +1,42 @@
+<h1>User Details</h1>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Dashboard', home_page_path %></li>
+  <li><%= link_to 'Users', user_index_path %></li>
+  <li class="active">Show</li>
+</ol>
+
+<div class="list-group">
+  <span class="list-group-item">
+      <div class="row">
+        <div class="col-md-6 margin-bottom-15">
+          <label>USERNAME:</label>
+          <span class="form-control-static"><%= @user.username %></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 margin-bottom-15">
+          <label>AGE:</label>
+          <span class="form-control-static"><%= @user.age %></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 margin-bottom-15">
+          <label>EMAIL:</label>
+          <span class="form-control-static"><%= @user.email %></span>
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <label>ROLES:</label>
+        <span class="form-control-static"><%= @roles.join(',') %></span>
+        <!--<span class="form-control-static"><%#= active_roles %></span>-->
+      </div>
+    </div>
+
+
+  </span>
+</div>

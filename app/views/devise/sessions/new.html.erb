@@ -1,0 +1,28 @@
+<h2>Log in</h2>
+<br /><br />
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group input-group col-md-6 margin-bottom-15">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <%= f.text_field :login, class: "form-control", placeholder: "username or email" %>
+    </div>
+
+
+    <div class="form-group input-group col-md-6 margin-bottom-15">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <%= f.password_field :password, class: "form-control", placeholder: "password" %>
+    </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="form-group input-group margin-bottom-15"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
+
+    <div class="row templatemo-form-buttons">
+      <div class="col-md-7 margin-bottom-15">
+        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+    </div><br />
+<% end %><br />
+
+<%= render "devise/shared/links" %>
+

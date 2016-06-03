@@ -1,0 +1,67 @@
+<h1>Editing Permission</h1>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Dashboard', home_page_path %></li>
+  <li><%= link_to ' Permissions', permission_index_path %></li>
+  <li class="active">Edit</li>
+</ol>
+<%= form_for @permission, url:  permission_path, :method => 'put' do |f| %>
+    <% if @permission.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@permission.errors.count, "error") %> prohibited this permission from being saved:</h2>
+
+          <ul>
+            <% @permission.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-4 margin-bottom-15">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, 'class' => "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :description %><br />
+        <%= f.text_area :description, autofocus: true, 'class' => "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :action %><br />
+        <%= f.text_field :action, autofocus: true, 'class' => "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :subject_class %><br />
+        <%= f.text_field :subject_class, autofocus: true, 'class' => "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :block %><br />
+        <%= f.text_area :block, autofocus: true, 'class' => "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="row templatemo-form-buttons">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+
+    </div>
+<% end %>
+
+

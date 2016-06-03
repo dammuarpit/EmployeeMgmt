@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EmployeeMgmt</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <meta charset="utf-8">
+  <!--[if IE]>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <title>Dashboard, Free HTML5 Admin Template</title>
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+<!--Logo-->
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="navbar-header">
+    <div class="logo">
+      <a href="/department/home"><img src="/assets/banner_employee.jpg" alt="Banner employee" style="height: 94px;width: 625px;"><img src="/assets/banner-performance-management.jpg" alt="Banner performance management" style="width: 384px;height: 94px"></a>
+    </div>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+</div>
+
+<!--sidebar-menu-->
+<div class="template-page-wrapper">
+  <div class="navbar-collapse collapse templatemo-sidebar">
+    <ul class="templatemo-sidebar-menu">
+      <li style="text-align: center">
+        <% if user_signed_in? %><b>Welcome <%= current_user.username %></b>
+        <% end %></li>
+      <br/>
+      <% if user_signed_in? %>
+          <li><%= link_to ' Home', home_page_path, 'class' => "fa fa-home" %></li>
+          <li><%= link_to ' Departments', departments_path, 'class' => "fa fa-cubes" if can? :read, Department %></li>
+          <li><%= link_to ' Users', user_index_path, 'class' => "fa fa-user" if can? :read, User %></li>
+          <li><%= link_to ' Roles', role_index_path, 'class' => "fa fa-shield" if can? :read, Role %></li>
+          <li><%= link_to ' Permissions', permission_index_path, 'class' => "fa fa-puzzle-piece" if can? :read, Permission %></li>
+          <li><%= link_to ' Associate Permission', role_pref_mgmt_path, 'class' => "fa fa-th-large" if can? :read, :all %></li>
+      <% end %>
+      <% if user_signed_in? %>
+          <li><%= link_to ' Edit Profile', edit_user_registration_path(current_user), 'class' => "fa fa-cogs" %></li>
+          <li><%= link_to ' Sign Out', destroy_user_session_path, method: :delete, 'class' => "fa fa-sign-out", :data => { :target => "#confirmModal" } %></li>
+      <% end %>
+    </ul>
+  </div>
+
+<!--body cotent-->
+  <div class="templatemo-content-wrapper">
+    <div class="templatemo-content">
+      <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>">
+            <a href="#" data-dismiss="alert" class="close">×</a>
+            <ul>
+              <li>
+                <%= value %>
+              </li>
+            </ul>
+          </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+
+  <!--footer-->
+  <footer class="templatemo-footer">
+    <div class="templatemo-copyright">
+      <p>Copyright &copy; 2014 Arpit Chandak</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

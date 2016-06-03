@@ -1,0 +1,58 @@
+<h2>Sign up</h2><br /><br />
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :username %>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <%= f.text_field :username, autofocus: true, 'class' => "form-control", placeholder: "username" %>
+      </div>
+      </div>
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :age %>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-angellist"></i></span>
+        <%= f.text_field :age, autofocus: true, 'class' => "form-control", placeholder: "age" %>
+      </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :email %>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-envelope-square"></i></span>
+        <%= f.text_field :email, autofocus: true, 'class' => "form-control", placeholder: "email" %>
+      </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :password %>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          <%= f.password_field :password, autofocus: true, 'class' => "form-control", placeholder: "passward" %>
+        </div>
+      </div>
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :password_confirmation %>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          <%= f.password_field :password_confirmation, autofocus: true, 'class' => "form-control", placeholder: "confirm password" %>
+        </div>
+      </div>
+    </div>
+
+      <div class="row templatemo-form-buttons">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="reset" class="btn btn-default">Reset</button>
+        </div>
+      </div>
+<% end %>
+<br /><br />
+<span><%= render "devise/shared/links" %></span>

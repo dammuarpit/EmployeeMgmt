@@ -1,0 +1,67 @@
+<h1>Editing User</h1>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Dashboard', home_page_path %></li>
+  <li><%= link_to 'Users', user_index_path %></li>
+  <li class="active">Edit</li>
+</ol>
+
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-4 margin-bottom-15">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true, 'class' => "form-control", 'placeholder' => 'username' %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :age %><br />
+        <%= f.text_field :age, autofocus: true, 'class' => "form-control", 'placeholder' => 'age' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :email %><br />
+        <%= f.text_field :email, autofocus: true, 'class' => "form-control", 'placeholder' => 'email' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= label_tag 'Roles' %><br />
+        <% for role in Role.order_by_asc.all %>
+          <% next if role.name == "SuperAdmin" %>
+          <%= check_box_tag "user[roles][#{role.id}]", role.id, @roles.include?(role), {:name => "user[roles][]"} %>
+          <%= label_tag "user[roles][#{role.id}]", role.name.camelcase %><br />
+        <% end %>
+        <%= hidden_field_tag "user[roles][]", "" %>
+      </div>
+    </div>
+
+    <div class="row templatemo-form-buttons">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+
+    </div>
+<% end %>
+
+
+
+

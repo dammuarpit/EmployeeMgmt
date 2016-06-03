@@ -1,0 +1,42 @@
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Dashboard', home_page_path %></li>
+  <li class="active">Permissions</li>
+</ol>
+
+<h1>Listing Permission</h1>
+
+<div class="table-responsive">
+  Here shows all permissions
+  <span style="margin-left: 600px"><%= link_to 'Add Permission', new_permission_path, 'class' => "btn btn-info" %></span><br /><br />
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Action</th>
+      <th>subject_class</th>
+      <th>Block</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @permissions.each do |permission| %>
+        <tr>
+          <td><%= permission.name %></td>
+          <td><%= permission.description %></td>
+          <td><%= permission.action %></td>
+          <td><%= permission.subject_class %></td>
+          <td><%= permission.block %></td>
+          <td><%= link_to 'Show', permission, 'class' => "btn btn-default" %></td>
+          <td><%= link_to 'Edit', edit_permission_path(permission), 'class' => "btn btn-default" %></td>
+          <td><%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' }, 'class' => "btn btn-default" %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+

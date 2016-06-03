@@ -1,0 +1,6 @@
+*.log
+public/assets
+config/mongoid.yml
+tmp/*
+.idea
+bin

@@ -1,0 +1,46 @@
+<h1>Permission Details</h1>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Dashboard', home_page_path %></li>
+  <li><%= link_to 'Permissions', permission_index_path %></li>
+  <li class="active">Show</li>
+</ol>
+
+<div class="list-group">
+  <span class="list-group-item">
+      <div class="row">
+        <div class="col-md-6 margin-bottom-15">
+          <label>NAME:</label>
+          <span class="form-control-static"><%= @permission.name %></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 margin-bottom-15">
+          <label>DESCRIPTION:</label>
+          <span class="form-control-static"><%= @permission.description %></span>
+        </div>
+      </div>
+
+     <div class="row">
+       <div class="col-md-6 margin-bottom-15">
+         <label>ACTION:</label>
+         <span class="form-control-static"><%= @permission.action %></span>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-md-6 margin-bottom-15">
+         <label>SUBJECT CLASS:</label>
+         <span class="form-control-static"><%= @permission.subject_class %></span>
+       </div>
+     </div>
+
+     <div class="row">
+       <div class="col-md-6 margin-bottom-15">
+         <label>BLOCK:</label>
+         <span class="form-control-static"><%= @permission.block %></span>
+       </div>
+     </div>
+  </span>
+</div>

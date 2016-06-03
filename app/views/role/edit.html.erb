@@ -1,0 +1,46 @@
+<h1>Editing department</h1>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Dashboard', home_page_path %></li>
+  <li><%= link_to ' Role', role_index_path %></li>
+  <li class="active">Edit</li>
+</ol>
+<%= form_for @role, url: role_path, :method => 'put', 'role'=>"form", :id=>"templatemo-preferences-form" do |f| %>
+    <% if @role.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@role.errors.count, "error") %> prohibited this department from being saved:</h2>
+
+          <ul>
+            <% @role.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-4 margin-bottom-15">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, 'class' => "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 margin-bottom-15">
+        <%= f.label :description %><br />
+        <%= f.text_area :description, autofocus: true, 'class' => "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="row templatemo-form-buttons">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+
+    </div>
+<% end %>
+
+

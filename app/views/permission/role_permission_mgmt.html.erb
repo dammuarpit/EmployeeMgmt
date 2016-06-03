@@ -1,0 +1,38 @@
+<h1>Role Permission management</h1>
+
+<%= form_tag role_pref_set_path, :method => 'post' do |f| %>
+
+    <div class="table-responsive">
+      Manage permission for roles<br/><br/>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+        <tr>
+          <th>#</th>
+          <% for role in @roles %>
+              <th><%= role.name.camelize %></th>
+          <% end %>
+        </tr>
+        </thead>
+        <tbody>
+        <% for permission in @permission %>
+            <tr>
+              <th><%= permission.description %></th>
+              <% for role in @roles %>
+                  <% next if role == "" %>
+                  <th><%= check_box_tag "permission[#{permission.id}][#{role.id}]", role.id, role.permissions.include?(permission), {:name => "permission[#{permission.id}][]"} %></th>
+              <% end %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="row templatemo-form-buttons">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+      </div>
+    </div>
+
+<% end %>
